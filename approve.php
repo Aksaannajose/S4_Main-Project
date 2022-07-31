@@ -1,3 +1,26 @@
+<?php
+session_start();
+ $id=$_SESSION['id'];
+ include'connection.php';
+ $sql1= mysqli_query($conn,"SELECT * FROM `login_table` WHERE `login_id`='$id'");
+ $b= mysqli_fetch_array($sql1);
+ $g=$b['Userid'];
+
+$sql="SELECT fname FROM `exptable` where `Userid`='$g'";
+      $a  = mysqli_query($conn,$sql);    
+	  $row = mysqli_fetch_array($a);
+			?>
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,8 +49,10 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-      <h2><center> Admin  </h2></center>
-      
+     
+	<font color=white ><h1> <p><?php echo $row['fname'];?><p></h1></font>
+	
+	
         <!--  <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
         </div>-->
@@ -252,6 +277,17 @@
             </li>
 				</a>
         
+		
+		<li class="nav-item">
+              <a class="nav-link" href="admin.php">
+			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title">Home</span>
+			  </li>
+			  </a>
+		
+		
+		
+		
 
 <li class="nav-item">
               <a class="nav-link" href="admin admin college.php">
@@ -430,6 +466,7 @@ include("connection.php");
 <!--<table border="5" cellspacing="5" cellpadding="10" width="80%">-->
 <center>
 <table  border=5  width=90%>
+<h2><font color=Black>List of Colleges</h2>
     <tr>
         <th>S.N</th>
         <th>College name</th>
@@ -445,18 +482,47 @@ $count=1;
 $sel_query="select * from college_registration_table ";
 $result = mysqli_query($conn,$sel_query);
 while($row = mysqli_fetch_assoc($result)) { ?>
-<tr><td align="center"><?php echo $count; ?></td>
+<tr><td align="center"><?php echo $count++; ?></td>
+
 <td align="center"><?php echo $row["College_name"]; ?></td>
 <td align="center"><?php echo $row["State"]; ?></td>
 
 <td align="center"><?php echo $row["University"]; ?></td>
 
 
-<td a href="approve.php?Approve=<?php echo $row["id"]; ?>"> <button class="btn btn-danger">Approved</button></a></td>
+<!--<td a href="approve.php?Approve=<?php echo $row["id"]; ?>"> <button class="btn btn-danger">Approved</button></a></td>-->
+
+  <td><?php 
+                         if($row['Status']=="1") 
+                            echo "Reject";
+                        else 
+                            echo "Approved";
+                    ?>                          
+                </td>
+                <td>
+                    <?php 
+                  if($row['Status']=="1") 
+				  {
+    echo 
+"<a href=reject.php?id=".$row['id']. " class='btn red'>
+Reject
+
+
+</a>";
+				  }
+				  else 
+				  {
+                        echo 
+"<a href=approved.php?id=".$row['id']." class='btn green'>Approved</a>";
+				  }
+                    ?>
+            </tr>
+        <?php } ?>  
 
 
 
-<?php $count++; } ?>
+
+   
 </tbody>
 </table>
 </center>

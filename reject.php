@@ -14,19 +14,12 @@
         // SQL query that sets the status to
         // 0 to indicate deactivation.
         $sql="UPDATE college_registration_table SET  `Status`=0 WHERE id='$Userid'";
-        $a="UPDATE login_table SET  `Status`=1 WHERE id='$Userid'";
+  
         // Execute the query
-     
-
-
-
-	 $r = mysqli_query($conn,$sql);
+        $r = mysqli_query($conn,$sql);
 		if($r){
 			echo"1";
-			$ar = mysqli_query($conn,$sql);
-			if($ar){
-			header('location: admin admin college.php');
-			}
+			header('location: approve.php');
 		}
 		
     }

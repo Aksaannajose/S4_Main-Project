@@ -1,3 +1,25 @@
+
+<?php
+session_start();
+ $id=$_SESSION['id'];
+ include'connection.php';
+ $sql1= mysqli_query($conn,"SELECT * FROM `login_table` WHERE `login_id`='$id'");
+ $b= mysqli_fetch_array($sql1);
+ $g=$b['Userid'];
+
+$sql="SELECT fname FROM `exptable` where `Userid`='$g'";
+      $a  = mysqli_query($conn,$sql);    
+	  $row = mysqli_fetch_array($a);
+			?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +48,9 @@
       <!-- partial:partials/_navbar.html -->
      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <h2>Admin</h2>
+        
+		
+		<font color=white ><h1> <p><?php echo $row['fname'];?><p></h1></font>
         
         <!-- <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
@@ -203,6 +227,15 @@
             </li>
 				</a>
         
+		
+		<li class="nav-item">
+             <a class="nav-link" href="admin.php">
+			 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title">Home  </span>
+			</li>
+			</a>
+		
+		
             
             <li class="nav-item">
              <a class="nav-link" href="admin admin college.php">
@@ -354,124 +387,99 @@
     <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\css\bootstrap.css"> <!--css file link in bootstrap folder-->  
     <title></title>  
 </head>  
-<style>  
-    .login-panel {  
-        margin-top: 150px;  
-    }  
-    .table {  
-      margin-left:90px;
-        margin-right: 50px;  
-		<align="right" width=20% height=50px>
-     }  
-</style>  
-  
-<body>  
-  
-<div class="table-scrol">  
-    
-<div class="table-responsive"><!--this is used for responsive display in mobile and other devices-->  
-    <table  align="bottom"  width=20% height=50px  class="table table-bordered table-hover table-striped" style="table-layout: fixed">  
-       
-<align ="right" width=5% height=10px>
-		
-		<table  border=3 width=50%>
-		
-		<thead>  
-  
-        <tr>  
 
 
-<?php 
-// Start session 
-@session_start(); 
- 
-// Include and initialize DB class 
-require_once 'DB.class.php'; 
-$db = new DB(); 
- 
-// Fetch the gallery data 
-$images = $db->getRows(); 
- 
-// Get session data 
-$sessData = !empty($_SESSION['sessData'])?$_SESSION['sessData']:''; 
- 
-// Get status message from session 
-if(!empty($sessData['status']['msg'])){ 
-    $statusMsg = $sessData['status']['msg']; 
-    $statusMsgType = $sessData['status']['type']; 
-    unset($_SESSION['sessData']['status']); 
-} 
+
+
+<?php
+require("db.php");
+include("connection.php");
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>View Company</title>
 
-<!-- Display status message -->
-<?php if(!empty($statusMsg)){ ?>
-<div class="col-xs-12">
-    <div class="alert alert-<?php echo $statusMsgType; ?>"><?php echo $statusMsg; ?></div>
-</div>
-<?php } ?>
+</head>
+<body>
+<div class="form">
 
-<div class="row" >
-    <div class="col-md-12 head">
-     <center>   <h2>Gallery</h2></center>
-        <!-- Add link -->
-        <div class="float-right">
-            <a href="adminaddedit.php" class="btn btn-success"><i class="plus"></i> New </a>
-        </div>
-    </div>
-	
-    <!-- List the images -->
-	<table class="table table-striped table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th width="10%"></th>
-                <th width="10%"></th>
-                <th width="20%">Title</th>
-              <!--  <th width="19%">Created</th>
-               <th width="10%">Status</th>-->
-                <th width="15%">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php 
-            if(!empty($images)){ $i=0; 
-                foreach($images as $row){ $i++; 
-                    $defaultImage = !empty($row['default_image'])?'<img src="uploads/images/'.$row['default_image'].'" alt="" />':''; 
-                    $statusLink = ($row['status'] == 1)?'postAction.php?action_type=block&id='.$row['id']:'postAction.php?action_type=unblock&id='.$row['id']; 
-                    $statusTooltip = ($row['status'] == 1)?'Click to Inactive':'Click to Active'; 
-            ?>
-            <tr>
-                <td><?php echo $i; ?></td>
-                <td><img height=90px width=90px src="img/<?php echo $row['image']; ?>"></td>
-                <td><?php echo $row['title']; ?></td>
-               <!-- <td><?php echo $row['created']; ?></td>-->
-                <td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge 
-				<?php echo ($row['status'] == 1)?'badge-success':'badge-danger'; ?>">
-				<?php echo ($row['status'] == 1)?'Active':'Inactive'; ?></span></a></td>
-                <td>
-                   <!-- <a href="adminview1.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">view</a>-->
-                    
-					
-					<td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge
-					<?php echo ($row['status'] == 1)?'badge-success':'badge-danger'; ?>">
-					<?php echo ($row['status'] == 1)?'Block':'Unblock'; ?></span></a></td>
-					
-					
-                    
-					<!--<a href="adminview1.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Block</a>
-					<a href="adminview1.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Unblock</a>-->
-					
-					<!--<a href="adminaddedit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">edit</a>-->
+<h2><center><font color=Black>View Company</h2></center>
+
+<table  border=2 width=10%>
+
+<thead>
+<tr>
+<th><strong>Sl no </strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Image</strong></th>
+ 
+ <th><strong>Action</strong></th>
+</tr>
+</thead>
+<tbody>
+<?php
+$count=1;
+$sel_query="Select * from gallery  ORDER BY id asc;";
+$result = mysqli_query($conn,$sel_query);
+while($row = mysqli_fetch_assoc($result)) { 
+
+?>
+<tr><td align="center"><?php echo $count; ?></td>
+<td align="center"><?php echo $row["title"]; ?></td>
+
+<td align=><img src='img/<?php echo $row["image"]; ?>' width=60px height=60px></td>
+
+<!--<td><a href="block.php?block=<?php echo $row["id"]; ?>"> <button class="btn btn-danger">Block</button></a></td>
+<td><a href="unblock.php?unblock=<?php echo $row["id"] ?>"><button class="btn btn-danger">Unblock</button></a></td>-->
+
+<!--<td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge-->
+			<!--		<?php echo ($row['status'] == 1)?'badge-success':'badge-danger'; ?>">-->
+			<!--		<?php echo ($row['status'] == 1)?'Block':'Unblock'; ?></span></a></td>-->
+
+
+
+<td><?php 
+                         if($row['status']=="1") 
+                            echo "Active";
+                        else 
+                            echo "Inactive";
+                    ?>                          
                 </td>
+                <td>
+                    <?php 
+                  if($row['status']=="1") 
+				  {
+    echo 
+"<a href=activate.php?id=".$row['id']. " class='btn red'>
+Active
+
+
+</a>";
+				  }
+				  else 
+				  {
+                        echo 
+"<a href=deactivate.php?id=".$row['id']." class='btn green'>Inactive</a>";
+				  }
+                    ?>
             </tr>
-            <?php } }else{ ?>
-            <tr><td colspan="6">No gallery found...</td></tr>
-            <?php } ?>
-        </tbody>
-    </table>
+        <?php } ?>  
+
+
+
+
+
+
+
+
+</tbody>
+</table>
 </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          
+
+           
+       
     </table>  
         </div>  
 </div>  
@@ -481,41 +489,4 @@ if(!empty($sessData['status']['msg'])){
 </html>  
 			
 		
-		
-
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
-    <footer class="footer">
-		  
-		
-            <div class="footer-inner-wraper">
-              <div class="d-sm-flex justify-content-center justify-content-sm-between">
-		 
-		
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                
-              </div>
-            </div>
-          </footer>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="assets/vendors/jquery-circle-progress/js/circle-progress.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="assets/js/off-canvas.js"></script>
-    <script src="assets/js/hoverable-collapse.js"></script>
-    <script src="assets/js/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="assets/js/dashboard.js"></script>
-    <!-- End custom js for this page -->
-  </body>
-</html>
+         

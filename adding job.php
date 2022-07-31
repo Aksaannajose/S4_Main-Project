@@ -1,3 +1,28 @@
+
+<?php
+session_start();
+ $id=$_SESSION['id'];
+ include'connection.php';
+ $sql1= mysqli_query($conn,"SELECT * FROM `login_table` WHERE `login_id`='$id'");
+ $b= mysqli_fetch_array($sql1);
+ $g=$b['Userid'];
+
+$sql="SELECT fname FROM `exptable` where `Userid`='$g'";
+      $a  = mysqli_query($conn,$sql);    
+	  $row = mysqli_fetch_array($a);
+			?>
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +51,9 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-      <h2><center> Welcome  Arya  </h2></center>
+    
+	
+	  <font color=white ><h2>Welcome : <?php echo $row['fname'];?><p></h2></font>
       
         <!--  <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
@@ -252,6 +279,18 @@
             </li>
 				</a>
         
+		
+		
+		<li class="nav-item">
+              <a class="nav-link" href="student_ad.php">
+			   <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title">Home</span>
+
+</li>
+</a>
+		
+		
+		
 
 <li class="nav-item">
               <a class="nav-link" href="profile.php">

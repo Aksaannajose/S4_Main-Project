@@ -1,3 +1,23 @@
+
+<?php
+session_start();
+ $id=$_SESSION['id'];
+ include'connection.php';
+ $sql1= mysqli_query($conn,"SELECT * FROM `login_table` WHERE `login_id`='$id'");
+ $b= mysqli_fetch_array($sql1);
+ $g=$b['Userid'];
+
+$sql="SELECT fname FROM `exptable` where `Userid`='$g'";
+      $a  = mysqli_query($conn,$sql);    
+	  $row = mysqli_fetch_array($a);
+			?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,6 +29,9 @@
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+	
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
@@ -19,7 +42,6 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
-	
     <link rel="shortcut icon" href="assets/images/favicon.png" />
   </head>
   <body>
@@ -27,9 +49,10 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <h2><center> <p>Admin</p></center></h2>
-        
-        <!--<a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
+      
+	   <font color=white ><h1> <p><?php echo $row['fname'];?><p></h1></font>
+      
+        <!--  <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
         </div>-->
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -37,8 +60,10 @@
             <span class="mdi mdi-menu"></span>
           </button>
           
-          <!--<ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item  dropdown d-none d-md-block">
+               
+               
+          <ul class="navbar-nav navbar-nav-right">
+            <!-- <li class="nav-item  dropdown d-none d-md-block">
               <a class="nav-link dropdown-toggle" id="reportDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Reports </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="reportDropdown">
                 <a class="dropdown-item" href="#">
@@ -50,8 +75,8 @@
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-file-word mr-2"></i>doc </a>
               </div>
-            </li>
-            <li class="nav-item  dropdown d-none d-md-block">
+            </li> -->
+            <!-- <li class="nav-item  dropdown d-none d-md-block">
               <a class="nav-link dropdown-toggle" id="projectDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Details </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="projectDropdown">
                 <a class="dropdown-item" href="#">
@@ -68,7 +93,7 @@
                 </div>
                 <div class="nav-language-text">
                   <p class="mb-1 text-black">English</p>
-                </div>
+                </div> -->
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
                 <a class="dropdown-item" href="#">
@@ -91,14 +116,14 @@
               </div>
             </li>
             <li class="nav-item nav-profile dropdown">
-              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <!-- <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
                   <img src="assets/images/faces/face28.png" alt="image">
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Admin</p>
+                   <p class="mb-1 text-black">Admin</p>
                 </div>
-              </a>-->
+              </a> -->
               <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
                 <div class="p-3 text-center bg-primary">
                   <img class="img-avatar img-avatar48 img-avatar-thumb" src="assets/images/faces/face28.png" alt="">
@@ -138,10 +163,10 @@
               </div>
             </li>
             <li class="nav-item dropdown">
-            <!--  <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <i class="mdi mdi-email-outline"></i>
                 <span class="count-symbol bg-success"></span>
-              </a>-->
+              </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
                 <h6 class="p-3 mb-0 bg-primary text-white py-4">Mail</h6>
                 <div class="dropdown-divider"></div>
@@ -157,8 +182,9 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face2.jpg" alt="image" class="profile-pic">
-                  </div>
+                   
+				   <!--<img src="assets/images/faces/face2.jpg" alt="image" class="profile-pic">
+                  </div>-->
                   <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">EY send you a mail</h6>
                     <p class="text-gray mb-0"> 15 Minutes ago </p>
@@ -179,10 +205,10 @@
               </div>
             </li>
             <li class="nav-item dropdown">
-            <!--  <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
                 <i class="mdi mdi-bell-outline"></i>
                 <span class="count-symbol bg-danger"></span>
-              </a>-->
+              </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
                 <h6 class="p-3 mb-0 bg-primary text-white py-4">Notifications</h6>
                 <div class="dropdown-divider"></div>
@@ -237,74 +263,96 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             
-              <a class="nav-link" href="">
-               
-				<div class="collapse" id="auth">
+              <a class="nav-link" href="admin.php">
                 
+				<div class="collapse" id="auth">
+                <ul class="nav flex-column sub-menu">
+              <!--    <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
+                  <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>-->
+                  
+                  
+                </ul>
               </div>
             </li>
 				</a>
         
-            
-            <li class="nav-item">
-             <a class="nav-link" href="admin admin college.php">
+		<li class="nav-item">
+              <a class="nav-link" href="admin.php">
 			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-              <span class="menu-title">College  </span>
+              <span class="menu-title">Home</span>
 			  </li>
 			  </a>
-	<!--		<div class="collapse" id="auth">
+		
+		
+		
+		
+		
+
+<li class="nav-item">
+              <a class="nav-link" href="admin admin college.php">
+			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title">College</span>
+			  </li>
+			  </a>
+
+
+
+
+        <li class="nav-item">
+              <a class="nav-link" href="adminadmin page.php">
+			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title">Company</span>
+			  </li>
+			  </a>
+            
+            <li class="nav-item">
+             <a class="nav-link" href="adminview.php">
+			 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title">Student </span>
+</li>
+</a>
+              <li class="nav-item">
+             <a class="nav-link" href="approve.php">
+			 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title">Approve </span>
+</li>
+</a>
+
+
+
+
+		<!--	<div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
                   <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>
 			</li>
 			</ul>
 			</div>
-			</a>-->
-            <li class="nav-item">
-              <a class="nav-link" href="adminadmin page.php">
-			   <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-              <span class="menu-title">Company  </span>
-			  
-			  </li>
-			  </a>
+			</a>
+         <li class="nav-item">
+             <!-- <a class="nav-link" href="javascript.php">
+              <span class="menu-title"> Payment</span>
               
-	<!--		  <div class="collapse" id="auth">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
-                  <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>
-			   </a>
-            </li>
-			</ul>
-			</div>-->
        
-	   <li class="nav-item">
-              <a class="nav-link" href="adminview.php">
-			   <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-              <span class="menu-title">Student </span>
-               </a>
-            </li>
-			
-			
-			<li class="nav-item">
-              <a class="nav-link" href="approve.php">
-			   <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-              <span class="menu-title">Approve </span>
-               </a>
-            </li>
-			
-			
-		<!--	  <div class="collapse" id="auth">
+			  <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
                   <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>
-	     </a>
+			  
+			  
+			  
+			  
+			  </a>
             </li>
 			</ul>
-			</div>-->
-	   
-	   
-	   
-            <!--<li class="nav-item">
+			</div>
+            <li class="nav-item">
+              <a class="nav-link" href="">
+               
+                <span class="menu-title"></span>
+              </a>
+            </li>-->
+           <!-- <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
                 <span class="menu-title">form</span>
@@ -328,16 +376,8 @@
                       <div class="sidebar-profile-img">
                         <img src="assets/images/faces/face28.png" alt="image">
                       </div>
-                      <div class="sidebar-profile-text">
-                        <p class="mb-1">Admin</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="badge badge-danger">4</div>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item sidebar-user-actions">
+                      
+          <!--  <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
                 <a href="#" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
                   <span class="menu-title">Settings</span>
@@ -348,15 +388,17 @@
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
                 <a class="nav-link" href="../logout.php">
-				 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+				<span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                   <span class="menu-title">Log Out</span>
 				  </a>
               </div>
             </li>
           </ul>
         </nav>
-       
-		<br>
+        
+		
+		
+        
 		<br>
     <!--        <div class="d-xl-flex justify-content-between align-items-start">
 			<br>
@@ -370,39 +412,29 @@
                 
                 </div>
 				
-                <div class="dropdown ml-0 ml-md-4 mt-2 mt-lg-0">
-				<br><br>
-                  <!-- <button class="btn bg-white dropdown-toggle p-3 d-flex align-items-center" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-calendar mr-1"></i>24 Mar 2012 - 24 Mar 2022 </button>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
-                    <h6 class="dropdown-header">Settings</h6>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                  </div> 
-                </div><div>
-              
-              
+               
+           
+                  <div class="d-md-block d-none">
+                    <a href="#" class="text-light p-1"><i class="mdi mdi-view-dashboard"></i></a>
+                    <a href="#" class="text-light p-1"><i class="mdi mdi-dots-vertical"></i></a>
+                  </div>
+                </div>
 				<br><br>
 				<br><br>
 				<html>
 <head lang="en">  
     <meta charset="UTF-8">  
-    <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\css\bootstrap.css"> <!--css file link in bootstrap folder 
+    <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\css\bootstrap.css"> <!--css file link in bootstrap folder
     <title></title>  
 </head>  -->
 
-  
+
 <body>  
+
+<center>
+<table  border=5  width=90%>
   
-<div class="table-scrol">  
-    
-<div class="table-responsive"><!--this is used for responsive display in mobile and other devices-->  
-    <table  align="bottom"  width=20% height=50px  class="table table-bordered table-hover table-striped" style="table-layout: fixed">  
-       
-<align ="right" width=5% height=10px>
-		
+<!--this is used for responsive display in mobile and other devices-->  
 		<thead>  
   
         <tr>  
@@ -473,23 +505,23 @@ if(isset($message)){
 		 
   $result=mysqli_query($conn,"SELECT * FROM `college_registration_table`") ;
    ?>
-   
-   <br>
-   <br>
-   <div class="company-display">
-      <table class="company-display-table" border=5  width=60% >
-
+<table border=2>
+<h2><font color=Black>List of Colleges</h2>
+<center>
          <tr>
-		 <td align="center">Sl no.<br><br><br>
-            <td align="center">College name <br><br><br>
-            <td align="center">Userid<br><br><br>
-            <td align="center">District<br><br><br>
-            <td align="center">State<br><br><br>
-			<td align="center">University<br><br><br>
-			   <td align="center">Action<br><br><br>
+		    <td align="center">Sl no.</td>
+            <td align="center">College name </td>
+            <td align="center">Userid</td>
+            <td align="center">District</td>
+            <td align="center">State</td>
+			<td align="center">University</td>
+			   <td align="center">Status</td>
+			<!--   <td align="center">Change</td>-->
          </tr>
          
-         <?php while($row = mysqli_fetch_assoc($result)){ ?>
+         <?php while($row = mysqli_fetch_assoc($result)){ 
+		
+		 ?>
          
             <tr>
 			<td><?php echo $row['id']; ?></td>
@@ -499,18 +531,44 @@ if(isset($message)){
 			<td><?php echo $row['State']; ?></td>
             <td><?php echo $row['University']; ?></td>
 			
-            <td>
-			
-			
-			<td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge
-					<?php echo ($row['Status'] == 1)?'badge-success':'badge-danger'; ?>">
-					<?php echo ($row['Status'] == 0)?'Block':'Unblock'; ?></span></a></td>
+
+		<!--	<td><button type="button" class="btn btn-info"><a  href="postAction2.php?id=<?php echo $row['id'];?>">Block</a></button></td>-->
+		<!--	<td><button type="button" class="btn btn-info"><a  href="postAction2.php?id=<?php echo $row['id'];?>">Unblock</a></button></td>-->
 					
+					
+						<td><?php 
+                         if($row['Status']=="1") 
+                            echo "Block";
+                        else 
+                            echo "Unblock";
+                    ?>                          
+                </td>
+                <td>
+                    <?php 
+                  if($row['Status']=="1") 
+				  {
+    echo 
+"<a href=block.php?id=".$row['id']. " class='btn red'>
+Unblock
+
+
+</a>";
+				  }
+				  else 
+				  {
+                        echo 
+"<a href=unblock.php?id=".$row['id']." class='btn green'>Block</a>";
+				  }
+                    ?>
+            </tr>
+        <?php } ?>  
+  
+    
+	
 			
-			
-              <!-- <a href="edit.php?edit=<?php echo $row['id']; ?>" class="btn btn-danger">  Block</a>
-               <a href="delete1.php?delete=<?php echo $row['id']; ?>" class="btn btn-danger">  Unblock </a>-->
-            </td> <?php } ?>
+           <!--   <a href="edit.php?edit=<?php echo $row['id']; ?>" class="btn btn-danger">  Block</a>-->
+             <!--  <a href="delete1.php?delete=<?php echo $row['id']; ?>" class="btn btn-danger">  Unblock </a>-->
+             </td>
 			</table>
          </tr>
 		 </center>

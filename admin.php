@@ -1,3 +1,24 @@
+
+<?php
+session_start();
+ $id=$_SESSION['id'];
+ include'connection.php';
+ $sql1= mysqli_query($conn,"SELECT * FROM `login_table` WHERE `login_id`='$id'");
+ $b= mysqli_fetch_array($sql1);
+ $g=$b['Userid'];
+
+$sql="SELECT fname FROM `exptable` where `Userid`='$g'";
+      $a  = mysqli_query($conn,$sql);    
+	  $row = mysqli_fetch_array($a);
+			?>
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,8 +47,10 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-      <h2><center> Admin  </h2></center>
       
+	 <font color=white ><h1> <p><?php echo $row['fname'];?><p></h1></font>
+	  
+	  
         <!--  <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
         </div>-->
@@ -240,8 +263,7 @@
           <ul class="nav">
             
               <a class="nav-link" href="admin.php">
-              
-                <span class="menu-title"></span>
+                
 				<div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
               <!--    <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
@@ -253,43 +275,52 @@
             </li>
 				</a>
         
+<li class="nav-item">
+              <a class="nav-link" href="admin.php">
+			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title">Home</span>
+			  </li>
+			  </a>
+
+
+
+
+
 
 <li class="nav-item">
               <a class="nav-link" href="admin admin college.php">
-			   <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
               <span class="menu-title">College</span>
 			  </li>
 			  </a>
 
 
 
+
         <li class="nav-item">
               <a class="nav-link" href="adminadmin page.php">
-			   <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
               <span class="menu-title">Company</span>
 			  </li>
 			  </a>
-			  
             
             <li class="nav-item">
              <a class="nav-link" href="adminview.php">
-			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-              <span class="menu-title">Student</span>
-			  </li>
-			  </a>
-			  
-
+			 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title">Student </span>
+</li>
+</a>
               <li class="nav-item">
              <a class="nav-link" href="approve.php">
-			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-              <span class="menu-title"> Approve</span>
+			 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title">Approve </span>
 </li>
 </a>
 
 
 
 
-	<!--		<div class="collapse" id="auth">
+		<!--	<div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
                   <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>
@@ -297,17 +328,12 @@
 			</ul>
 			</div>
 			</a>
-            <li class="nav-item">
+         <li class="nav-item">
              <!-- <a class="nav-link" href="javascript.php">
-              <span class="menu-title"> Payment</span>-->
+              <span class="menu-title"> Payment</span>
               
-             
-
-
-
-
-              
-	<!--		  <div class="collapse" id="auth">
+       
+			  <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
                   <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>
@@ -361,7 +387,7 @@
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
                 <a class="nav-link" href="../logout.php">
-				 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+				<span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                   <span class="menu-title">Log Out</span>
 				  </a>
               </div>
@@ -371,10 +397,9 @@
         
 		
 		
-       
+        
 		<br>
-		<br>
-            <div class="d-xl-flex justify-content-between align-items-start">
+    <!--        <div class="d-xl-flex justify-content-between align-items-start">
 			<br>
 		<br>
 		<br>
@@ -398,25 +423,19 @@
 				<html>
 <head lang="en">  
     <meta charset="UTF-8">  
-    <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\css\bootstrap.css"> <!--css file link in bootstrap folder-->  
+    <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\css\bootstrap.css"> <!--css file link in bootstrap folder
     <title></title>  
-</head>  
+</head>  -->
+
   
 <body>  
   
-<div class="table-scrol">  
-    
-<div class="table-responsive"><!--this is used for responsive display in mobile and other devices--> 
+
 <form method="POST" action=""> 
-    <table  align="bottom"  width=20% height=50px  class="table table-bordered table-hover table-striped" style="table-layout: fixed">  
-        
-		<table width="100%" border="1" style="border-collapse:collapse;">
+    
        <table  border=2 width=80%>
 
-		
-		
-		<align ="right" width=5% height=10px>
-		
+<h1><center><font color=Black>List of Company</h1></center>
 		<thead>  
   
         <tr>  
@@ -455,7 +474,8 @@
 			<td><?php echo $State;  ?></td>  
 
               
-                <td><?php 
+               
+			   <td><?php 
                          if($row['Status']=="1") 
                             echo "Active";
                         else 
@@ -467,17 +487,33 @@
                   if($row['Status']=="1") 
 				  {
     echo 
-"<a href=deactivate.php?id1=".$row['id']. " class='btn red'>Deactivate</a>";
+"<a href=activate1.php?id=".$row['id']. " class='btn red'>
+Active
+
+
+</a>";
 				  }
 				  else 
 				  {
                         echo 
-"<a href=activate.php?id=".$row['id']." class='btn green'>Activate</a>";
+"<a href=deactivate1.php?id=".$row['id']." class='btn green'>Inactive</a>";
 				  }
                     ?>
             </tr>
         <?php } ?>  
-  
+
+
+
+
+
+			   
+			   
+			   
+			   
+			   
+			   
+			   
+			   
     </table>  
 	</form>
         </div>  

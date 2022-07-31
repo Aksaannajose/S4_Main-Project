@@ -5,8 +5,8 @@ box-sizing:border-box;
 }
 body
 {
-//background-color: #00001;
-//background-image:   -webkit-linear-gradient(120deg,   #313131   50%   #4f5355   50%);
+background-color: #DCDCDC;
+background-image:   -webkit-linear-gradient(120deg,   #313131   50%   #4f5355   50%);
 }
 .container{
 max-width:  900px;

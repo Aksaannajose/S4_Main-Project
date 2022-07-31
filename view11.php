@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,20 +27,25 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-      <h2><center> Admin  </h2></center>
-      
-        <!--  <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
-        </div>-->
+        </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
-          
-               
-               
+          <div class="search-field d-none d-xl-block">
+            <form class="d-flex align-items-center h-100" action="#">
+              <div class="input-group">
+                <div class="input-group-prepend bg-transparent">
+                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                </div>
+                <input type="text" class="form-control bg-transparent border-0" placeholder="Search">
+              </div>
+            </form>
+          </div>
           <ul class="navbar-nav navbar-nav-right">
-            <!-- <li class="nav-item  dropdown d-none d-md-block">
+            <li class="nav-item  dropdown d-none d-md-block">
               <a class="nav-link dropdown-toggle" id="reportDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Reports </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="reportDropdown">
                 <a class="dropdown-item" href="#">
@@ -51,8 +57,8 @@
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-file-word mr-2"></i>doc </a>
               </div>
-            </li> -->
-            <!-- <li class="nav-item  dropdown d-none d-md-block">
+            </li>
+            <li class="nav-item  dropdown d-none d-md-block">
               <a class="nav-link dropdown-toggle" id="projectDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Details </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="projectDropdown">
                 <a class="dropdown-item" href="#">
@@ -69,7 +75,7 @@
                 </div>
                 <div class="nav-language-text">
                   <p class="mb-1 text-black">English</p>
-                </div> -->
+                </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
                 <a class="dropdown-item" href="#">
@@ -92,14 +98,14 @@
               </div>
             </li>
             <li class="nav-item nav-profile dropdown">
-              <!-- <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
                   <img src="assets/images/faces/face28.png" alt="image">
                 </div>
                 <div class="nav-profile-text">
-                   <p class="mb-1 text-black">Admin</p>
+                  <p class="mb-1 text-black">Admin</p>
                 </div>
-              </a> -->
+              </a>
               <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
                 <div class="p-3 text-center bg-primary">
                   <img class="img-avatar img-avatar48 img-avatar-thumb" src="assets/images/faces/face28.png" alt="">
@@ -158,9 +164,8 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                   
-				   <!--<img src="assets/images/faces/face2.jpg" alt="image" class="profile-pic">
-                  </div>-->
+                    <img src="assets/images/faces/face2.jpg" alt="image" class="profile-pic">
+                  </div>
                   <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">EY send you a mail</h6>
                     <p class="text-gray mb-0"> 15 Minutes ago </p>
@@ -239,54 +244,20 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             
-              <a class="nav-link" href="admin.php">
-                
+              <a class="nav-link" href="admincopy.php">
+                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                <span class="menu-title">Dashboard</span>
 				<div class="collapse" id="auth">
-                <ul class="nav flex-column sub-menu">
-              <!--    <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
-                  <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>-->
-                  
-                  
-                </ul>
+                
               </div>
             </li>
 				</a>
         
-
-<li class="nav-item">
-              <a class="nav-link" href="admin admin college.php">
-			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-              <span class="menu-title">College</span>
-			  </li>
-			  </a>
-
-
-
-
-        <li class="nav-item">
-              <a class="nav-link" href="adminadmin page.php">
-			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-              <span class="menu-title">Company</span>
-			  </li>
-			  </a>
             
             <li class="nav-item">
-             <a class="nav-link" href="adminview.php">
-			 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-              <span class="menu-title">Student </span>
-</li>
-</a>
-              <li class="nav-item">
-             <a class="nav-link" href="approve.php">
-			 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-              <span class="menu-title">Approve </span>
-</li>
-</a>
-
-
-
-
-		<!--	<div class="collapse" id="auth">
+             <a class="nav-link" href="admin admin college.php">
+              <span class="menu-title">College  </span>
+			<div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
                   <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>
@@ -294,30 +265,36 @@
 			</ul>
 			</div>
 			</a>
-         <li class="nav-item">
-             <!-- <a class="nav-link" href="javascript.php">
-              <span class="menu-title"> Payment</span>
+            <li class="nav-item">
+              <a class="nav-link" href="adminadmin page.php">
+              <span class="menu-title">Company  </span>
               
-       
 			  <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
                   <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>
-			  
-			  
-			  
-			  
-			  </a>
+			   </a>
             </li>
 			</ul>
 			</div>
+       
+	   <li class="nav-item">
+              <a class="nav-link" href="view11.php">
+              <span class="menu-title">Student </span>
+               </a>
+            </li>
+			  <div class="collapse" id="auth">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
+                  <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>
+	     </a>
+            </li>
+			</ul>
+			</div>
+	   
+	   
+	   
             <li class="nav-item">
-              <a class="nav-link" href="">
-               
-                <span class="menu-title"></span>
-              </a>
-            </li>-->
-           <!-- <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
                 <span class="menu-title">form</span>
@@ -341,31 +318,38 @@
                       <div class="sidebar-profile-img">
                         <img src="assets/images/faces/face28.png" alt="image">
                       </div>
-                      
-          <!--  <li class="nav-item sidebar-user-actions">
+                      <div class="sidebar-profile-text">
+                        <p class="mb-1">Admin</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="badge badge-danger">4</div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
                 <a href="#" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
                   <span class="menu-title">Settings</span>
                 </a>
               </div>
-            </li>-->
+            </li>
             
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
                 <a class="nav-link" href="../logout.php">
-				<span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                   <span class="menu-title">Log Out</span>
 				  </a>
               </div>
             </li>
           </ul>
         </nav>
-        
-		
-		
-        
+       <br><br>
 		<br>
-    <!--        <div class="d-xl-flex justify-content-between align-items-start">
+		<br>
+		<br>
+		<br>
+            <div class="d-xl-flex justify-content-between align-items-start">
 			<br>
 		<br>
 		<br>
@@ -377,34 +361,29 @@
                 
                 </div>
 				
-               
-           
-                  <div class="d-md-block d-none">
-                    <a href="#" class="text-light p-1"><i class="mdi mdi-view-dashboard"></i></a>
-                    <a href="#" class="text-light p-1"><i class="mdi mdi-dots-vertical"></i></a>
-                  </div>
-                </div>
+                <div class="dropdown ml-0 ml-md-4 mt-2 mt-lg-0">
+				<br><br>
+                  <!-- <button class="btn bg-white dropdown-toggle p-3 d-flex align-items-center" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-calendar mr-1"></i>24 Mar 2012 - 24 Mar 2022 </button>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
+                    <h6 class="dropdown-header">Settings</h6>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                  </div> -->
+                </div><div>
+              
+              
 				<br><br>
 				<br><br>
 				<html>
 <head lang="en">  
     <meta charset="UTF-8">  
-    <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\css\bootstrap.css"> <!--css file link in bootstrap folder
+    <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\css\bootstrap.css"> <!--css file link in bootstrap folder-->  
     <title></title>  
-</head>  -->
+</head>  
 
-
-
-<style>  
-    .login-panel {  
-        margin-top: 150px;  
-    }  
-    .table {  
-      margin-left:90px;
-        margin-right: 50px;  
-		<align="right" width=20% height=50px>
-     }  
-</style>  
   
 <body>  
   
@@ -415,89 +394,109 @@
        
 <align ="right" width=5% height=10px>
 		
-		<thead>  
-  
-        <tr>  
 
 
-<?php 
-// Start session 
-@session_start(); 
-// Include and initialize DB class 
-require_once 'DB.class.php'; 
-$db = new DB(); 
- 
-// Fetch the gallery data 
-$images = $db->getRows(); 
- 
-// Get session data 
-$sessData = !empty($_SESSION['sessData'])?$_SESSION['sessData']:''; 
- 
-// Get status message from session 
-if(!empty($sessData['status']['msg'])){ 
-    $statusMsg = $sessData['status']['msg']; 
-    $statusMsgType = $sessData['status']['type']; 
-    unset($_SESSION['sessData']['status']); 
-} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>admin page</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="CSS/STYLE1.CSS">
+
+</head>
+
+
+<?php
+// $conn = mysqli_connect('localhost','root','','placement_portal');
+
+// if (!$conn)
+// {
+//   die('Could not connect: ' . mysql_error());
+
+//   }
+
+// // mysqli_select_db("placement_portal", $conn);
+
+// $result = mysqli_query($conn,"SELECT * FROM college_registration_table");
+
+// while($row = mysqli_fetch_array($result))
+
+//   {
+
+//   echo $row['id'] . " " . $row['College_name']. $row['Userid']. $row['District']. $row['State']. $row['University'];
+
+//   echo "<br />";
+
+//   }
+  ?>
+
+
+<?php
+require("db.php");
+include("connection.php");
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>View Records</title>
 
-<!-- Display status message -->
-<?php if(!empty($statusMsg)){ ?>
-<div class="col-xs-12">
-    <div class="alert alert-<?php echo $statusMsgType; ?>"><?php echo $statusMsg; ?></div>
-</div>
-<?php } ?>
+</head>
+<body>
+<div class="form">
 
-<div class="row" >
-    <div class="col-md-12 head">
-        <h5>Gallery</h5>
-        <!-- Add link -->
-        <div class="float-right">
-            <a href="adminaddedit.php" class="btn btn-success"><i class="plus"></i> New Gallery</a>
-        </div>
-    </div>
-	
-    <!-- List the images -->
-	<table class="table table-striped table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th width="10%"></th>
-                <th width="10%"></th>
-                <th width="20%">Title</th>
-                <th width="19%">Created</th>
-                <th width="10%">Status</th>
-                <th width="15%">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php 
-            if(!empty($images)){ $i=0; 
-                foreach($images as $row){ $i++; 
-                    $defaultImage = !empty($row['default_image'])?'<img src="uploads/images/'.$row['default_image'].'" alt="" />':''; 
-                    $statusLink = ($row['status'] == 1)?'postAction.php?action_type=block&id='.$row['id']:'postAction.php?action_type=unblock&id='.$row['id']; 
-                    $statusTooltip = ($row['status'] == 1)?'Click to Inactive':'Click to Active'; 
-            ?>
-            <tr>
-                <td><?php echo $i; ?></td>
-                <td><img height=90px width=90px src="img/<?php echo $row['image']; ?>"></td>
-                <td><?php echo $row['title']; ?></td>
-                <td><?php echo $row['created']; ?></td>
-                <td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge <?php echo ($row['status'] == 1)?'badge-success':'badge-danger'; ?>"><?php echo ($row['status'] == 1)?'Active':'Inactive'; ?></span></a></td>
-                <td>
-               <!--     <a href="adminview1.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">view</a>-->
-                    <a href="adminaddedit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">edit</a>
-                    <a href="postAction.php?action_type=delete&id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete data?')?true:false;">delete</a>
-                </td>
-            </tr>
-            <?php } }else{ ?>
-            <tr><td colspan="6">No gallery found...</td></tr>
-            <?php } ?>
-        </tbody>
-    </table>
+<h2>View Records</h2>
+<table width="100%" border="1" style="border-collapse:collapse;">
+<thead>
+<tr>
+<th><strong>id </strong></th>
+<th><strong>Name</strong></th>
+<th><strong>College</strong></th>
+ <th><strong>Image</strong></th>
+ <th><strong>Action</strong></th>
+</tr>
+</thead>
+<tbody>
+<?php
+$count=1;
+$sel_query="Select * from placed_table  ORDER BY id asc;";
+$result = mysqli_query($conn,$sel_query);
+while($row = mysqli_fetch_assoc($result)) { ?>
+<tr><td align="center"><?php echo $count; ?></td>
+<td align="center"><?php echo $row["Name"]; ?></td>
+<td align="center"><?php echo $row["College"]; ?></td>
+<td align=><img src='img/<?php echo $row["Image"]; ?>' width=60px height=60px></td>
+
+<td><a href="edit.php?edit=<?php echo $id ?>"><button class="btn btn-danger">Edit</button></a></td>
+
+
+
+
+
+<?php $count++; } ?>
+</tbody>
+</table>
 </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          
+</body>
+</html>
+           
+        <br><br><br><br> 
+		
+            <div class="footer-inner-wraper">
+              <div class="d-sm-flex justify-content-center justify-content-sm-between">
+		
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+                
+              </div>
+            </div>
+          </footer>
     </table>  
         </div>  
 </div>  
@@ -515,18 +514,6 @@ if(!empty($sessData['status']['msg'])){
       </div>
       <!-- page-body-wrapper ends -->
     </div>
-    <footer class="footer">
-		  
-		
-            <div class="footer-inner-wraper">
-              <div class="d-sm-flex justify-content-center justify-content-sm-between">
-		 
-		
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                
-              </div>
-            </div>
-          </footer>
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>

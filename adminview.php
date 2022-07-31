@@ -1,3 +1,26 @@
+
+
+<?php
+session_start();
+ $id=$_SESSION['id'];
+ include'connection.php';
+ $sql1= mysqli_query($conn,"SELECT * FROM `login_table` WHERE `login_id`='$id'");
+ $b= mysqli_fetch_array($sql1);
+ $g=$b['Userid'];
+
+$sql="SELECT fname FROM `exptable` where `Userid`='$g'";
+      $a  = mysqli_query($conn,$sql);    
+	  $row = mysqli_fetch_array($a);
+			?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,8 +49,11 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-      <h2><center> Admin </h2></center>
-      
+     
+	 
+	 <font color=white ><h1> <p><?php echo $row['fname'];?><p></h1></font>
+	 
+	 
         <!--  <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
         </div>-->
@@ -240,11 +266,10 @@
           <ul class="nav">
             
               <a class="nav-link" href="admin.php">
-               
-                <span class="menu-title"></span>
+                
 				<div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-        <!--          <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
+              <!--    <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
                   <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>-->
                   
                   
@@ -258,15 +283,25 @@
               <a class="nav-link" href="admin admin college.php">
 			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
               <span class="menu-title">College</span>
+			  </li>
+			  </a>
 
-</li>
-</a>
+ <li class="nav-item">
+              <a class="nav-link" href="admin.php">
+			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title">Home</span>
+			  </li>
+			  </a>
+            
+
+
+
 
 
         <li class="nav-item">
               <a class="nav-link" href="adminadmin page.php">
 			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-              <span class="menu-title">Company </span>
+              <span class="menu-title">Company</span>
 			  </li>
 			  </a>
             
@@ -274,7 +309,6 @@
              <a class="nav-link" href="adminview.php">
 			 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
               <span class="menu-title">Student </span>
-
 </li>
 </a>
               <li class="nav-item">
@@ -287,7 +321,7 @@
 
 
 
-	<!--		<div class="collapse" id="auth">
+		<!--	<div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
                   <li class="nav-item"> <a class="nav-link" href=""> admin </a></li>
@@ -295,16 +329,11 @@
 			</ul>
 			</div>
 			</a>
-            <li class="nav-item">
-              <a class="nav-link" href="javascript.php">
+         <li class="nav-item">
+             <!-- <a class="nav-link" href="javascript.php">
               <span class="menu-title"> Payment</span>
               
-             
-
-
-
-
-              
+       
 			  <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href=""> user </a></li>
@@ -369,9 +398,9 @@
         
 		
 		
-      
+        
 		<br>
-     <!--       <div class="d-xl-flex justify-content-between align-items-start">
+    <!--        <div class="d-xl-flex justify-content-between align-items-start">
 			<br>
 		<br>
 		<br>
@@ -398,15 +427,14 @@
     <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\css\bootstrap.css"> <!--css file link in bootstrap folder
     <title></title>  
 </head>  -->
+
+
+
+
+
+
+
   
-<body>  
-  
-<div class="table-scrol">  
-    
-<div class="table-responsive"><!--this is used for responsive display in mobile and other devices-->  
-    <table  align="bottom"  width=20% height=50px  class="table table-bordered table-hover table-striped" style="table-layout: fixed">  
-       
-<align ="right" width=5% height=10px>
 		
 
 
@@ -466,8 +494,8 @@ include("connection.php");
 <body>
 <div class="form">
 
-<h2>View Records</h2>
-<table width="100%" border="1" style="border-collapse:collapse;">
+<h2><center><font color=Black>View Records</h2></center>
+
 <table  border=2 width=10%>
 
 <thead>
@@ -486,7 +514,9 @@ include("connection.php");
 $count=1;
 $sel_query="Select * from placed_table  ORDER BY id asc;";
 $result = mysqli_query($conn,$sel_query);
-while($row = mysqli_fetch_assoc($result)) { ?>
+while($row = mysqli_fetch_assoc($result)) { 
+
+?>
 <tr><td align="center"><?php echo $count; ?></td>
 <td align="center"><?php echo $row["Name"]; ?></td>
 <td align="center"><?php echo $row["College"]; ?></td>
@@ -500,13 +530,46 @@ while($row = mysqli_fetch_assoc($result)) { ?>
 <!--<td><a href="block.php?block=<?php echo $row["id"]; ?>"> <button class="btn btn-danger">Block</button></a></td>
 <td><a href="unblock.php?unblock=<?php echo $row["id"] ?>"><button class="btn btn-danger">Unblock</button></a></td>-->
 
-<td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge
-					<?php echo ($row['status'] == 1)?'badge-success':'badge-danger'; ?>">
-					<?php echo ($row['status'] == 1)?'Block':'Unblock'; ?></span></a></td>
+<!--<td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge-->
+			<!--		<?php echo ($row['status'] == 1)?'badge-success':'badge-danger'; ?>">-->
+			<!--		<?php echo ($row['status'] == 1)?'Block':'Unblock'; ?></span></a></td>-->
 
 
 
-<?php $count++; } ?>
+<td><?php 
+                         if($row['status']=="1") 
+                            echo "Block";
+                        else 
+                            echo "Unblock";
+                    ?>                          
+                </td>
+                <td>
+                    <?php 
+                  if($row['status']=="1") 
+				  {
+    echo 
+"<a href=block1.php?id=".$row['id']. " class='btn red'>
+Unblock
+
+
+</a>";
+				  }
+				  else 
+				  {
+                        echo 
+"<a href=unblock1.php?id=".$row['id']." class='btn green'>Block</a>";
+				  }
+                    ?>
+            </tr>
+        <?php } ?>  
+
+
+
+
+
+
+
+
 </tbody>
 </table>
 </div>

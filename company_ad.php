@@ -1,4 +1,4 @@
-<!--
+
 <?php
 session_start();
  $id=$_SESSION['id'];
@@ -12,7 +12,6 @@ $sql="SELECT Company_name FROM `company_registration_table` where `Userid`='$g'"
 	  $row = mysqli_fetch_array($a);
 			?>
 
--->
 
 
 <!DOCTYPE html>
@@ -44,8 +43,8 @@ $sql="SELECT Company_name FROM `company_registration_table` where `Userid`='$g'"
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
           
-<h1>WIPRO</h1>
-<!--<p><?php echo $row['Company_name'];?><p>-->
+
+<font color=white ><h2>Cmp : <?php echo $row['Company_name'];?><p></h2></font>
 
 
 
@@ -270,6 +269,16 @@ $sql="SELECT Company_name FROM `company_registration_table` where `Userid`='$g'"
               </div>
             </li>
 				</a>
+				
+				
+				<li class="nav-item">
+              <a class="nav-link" href="company_ad.php">
+			  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+              <span class="menu-title"> Home </span>
+</li>
+</a>
+				
+				
 				
 				
  <li class="nav-item">
